@@ -3,7 +3,12 @@ name = "imgui-bundle-tutorial"
 version = "0.1.0"
 description = "Sandbox repository to learn imgui_bundle"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = [
     "imgui-bundle[full]>=1.92.600",
+]
+
+[dependency-groups]
+dev = [
+    "ty>=0.0.21",
 ]
