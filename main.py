@@ -5,7 +5,36 @@ checked = False
 text = "Hello"
 
 
+# Good: State in a class or module-level variables
+class AppState:
+    counter = 0.0
+    name = ""
+
+
+state = AppState()
+
+
 def gui():
+    global checked
+
+    print(
+        state.counter, state.name
+    )  # Printing state for demonstration. It prints on every frame
+    if imgui.button("Increment"):
+        state.counter += 1
+    _, state.name = imgui.input_text("Name", state.name)
+
+    changed, checked = imgui.checkbox("Enable", checked)
+    # Widget only exists when show_advanced is True
+    if checked:
+        _, state.counter = imgui.slider_float("Advanced", state.counter, 0, 1)
+
+    font_size = imgui.get_font_size()
+    imgui.button("Click", imgui.ImVec2(font_size * 20, font_size * 2))
+
+
+def gui_key_concepts():
+
     global value, checked, text
 
     imgui.text("Hello, world!")
